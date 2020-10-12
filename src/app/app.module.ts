@@ -14,6 +14,9 @@ import { DragonResolve } from './services/dragon.resolver';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AccessGuard } from './access/login/services/access.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
-    DragonResolve
+    DragonResolve,
+    AccessGuard
   ],
   bootstrap: [AppComponent]
 })
