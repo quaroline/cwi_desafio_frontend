@@ -6,7 +6,6 @@ import { LoginComponent } from './access/login/login.component';
 import { DragonCreateComponent } from './dragons/dragon-create/dragon-create.component';
 import { DragonListComponent } from './dragons/dragon-list/dragon-list.component';
 import { DragonDetailsComponent } from './dragons/dragon-details/dragon-details.component';
-import { DragonDeleteComponent } from './dragons/dragon-delete/dragon-delete.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +20,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DragonCreateComponent,
     DragonListComponent,
     DragonDetailsComponent,
-    DragonDeleteComponent,
     DragonEditComponent
   ],
   imports: [

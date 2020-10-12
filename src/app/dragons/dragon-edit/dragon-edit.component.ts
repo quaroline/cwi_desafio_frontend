@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dragon } from 'src/app/models/dragon';
 import { DragonService } from 'src/app/services/dragon.service';
 
@@ -17,6 +17,7 @@ export class DragonEditComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private route: ActivatedRoute,
     private dragonService: DragonService) {
     this.originalDragon = this.route.snapshot.data['dragon'];
@@ -42,7 +43,10 @@ export class DragonEditComponent implements OnInit {
       alert("Something's wrong! Try again later.");
     }
 
-    this.dragon.histories.push(this.originalDragon);
-    this.dragonService.editDragon(this.originalDragon.id, this.dragon);
+    //this.dragon.histories.push(this.originalDragon);
+    this.dragonService.editDragon(this.originalDragon.id, this.dragon).subscribe(
+      data => { alert(`${this.dragon.name} edited successfully.`); },
+      fail => { alert(`Error: ${fail}`); },
+      () => { this.router.navigate(['/']); });
   }
 }

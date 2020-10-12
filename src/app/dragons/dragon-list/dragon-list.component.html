@@ -1,3 +1,10 @@
+<h4 class="mb-2">
+    List of Dragons
+    <a routerLink="/create" class="btn btn-success btn-sm" title="Create New Dragon">
+        <b>+ New Dragon</b>
+    </a>
+</h4>
+<hr>
 <div class="text-center">
     <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="flex-start">
         <div *ngFor="let dragon of dragons">
