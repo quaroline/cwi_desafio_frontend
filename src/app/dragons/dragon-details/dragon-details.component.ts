@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Dragon } from 'src/app/models/dragon';
+import * as moment from 'moment'; 
 
 @Component({
   selector: 'app-dragon-details',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DragonDetailsComponent implements OnInit {
 
-  constructor() { }
+  createdDate: string;
+  dragon: Dragon = new Dragon();
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute) {
+    this.dragon = this.route.snapshot.data['dragon'];
+    this.createdDate = moment(new Date(this.dragon.createdAt)).format("MM/DD/yyyy hh:mm a");
   }
 
+  ngOnInit(): void {}
 }

@@ -1,1 +1,9 @@
-<p>dragon-details works!</p>
+<div class="col-md-6">
+    <h4 class="mb-2">Details about <b>{{ dragon.name }}, The {{ dragon.type }}</b></h4>
+    <hr>
+    <div class="form-group">
+        <label for="name"><b>Name</b></label>: {{ dragon.name }}<br>
+        <label for="type"><b>Type</b></label>: {{ dragon.type }}<br>
+        <label for="createdAt"><b>Created at</b></label>: {{ createdDate }}
+    </div>
+</div>
