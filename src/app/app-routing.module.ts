@@ -7,13 +7,15 @@ import { DragonDetailsComponent } from './dragons/dragon-details/dragon-details.
 import { DragonEditComponent } from './dragons/dragon-edit/dragon-edit.component';
 import { DragonListComponent } from './dragons/dragon-list/dragon-list.component';
 import { DragonResolve } from './services/dragon.resolver';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: DragonListComponent, canActivate: [AccessGuard] },
   { path: 'create', component: DragonCreateComponent, canActivate: [AccessGuard] },
   { path: 'details/:id', component: DragonDetailsComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },
-  { path: 'edit/:id', component: DragonEditComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] }
+  { path: 'edit/:id', component: DragonEditComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

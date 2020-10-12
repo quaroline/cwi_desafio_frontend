@@ -17,6 +17,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AccessGuard } from './access/login/services/access.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
     DragonCreateComponent,
     DragonListComponent,
     DragonDetailsComponent,
-    DragonEditComponent
+    DragonEditComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
