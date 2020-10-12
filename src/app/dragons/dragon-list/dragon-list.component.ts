@@ -17,6 +17,8 @@ export class DragonListComponent implements OnInit {
 
   dragons: Dragon[] = [];
 
+  p: number = 1;
+
   ngOnInit(): void {
     this.dragonService.getDragons().subscribe(
       data => { 
@@ -24,7 +26,7 @@ export class DragonListComponent implements OnInit {
           return {...s,
             photo: `assets/dragon/${Math.floor(Math.random() * 7) + 1}.png`
           }
-        })
+        });
       },
       fail => { alert("erro"); },
       () => { });
@@ -33,9 +35,9 @@ export class DragonListComponent implements OnInit {
   private removeDragon(id: number) {
     this.dragonService.deleteDragon(id).subscribe(
       data => {
-        const deletedDragonIndex = this.dragons.findIndex(d => d.id == id);
+        const originalDragonIndex = this.dragons.findIndex(d => d.id == id);
 
-        this.dragons.splice(deletedDragonIndex, 1);
+        this.dragons.splice(originalDragonIndex, 1);
       },
       fail => { alert("erro"); },
       () => { });

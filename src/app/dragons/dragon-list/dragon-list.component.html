@@ -1,4 +1,4 @@
-<h4 class="mb-2">
+<h4 class="mb-2 text-center">
     List of Dragons
     <a routerLink="/create" class="btn btn-success btn-sm" title="Create New Dragon">
         <b>+ New Dragon</b>
@@ -6,8 +6,8 @@
 </h4>
 <hr>
 <div class="text-center">
-    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="flex-start">
-        <div *ngFor="let dragon of dragons">
+    <div class="col d-flex justify-content-center" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="flex-start">
+        <div *ngFor="let dragon of dragons | paginate: { itemsPerPage: 3, currentPage: p }">
             <div class="card text-center mb-3" style="width: 18rem;" fxFlex.lt-sm="100%">
                 <div class="card-header text-muted">
                     <div class="row">
@@ -46,4 +46,5 @@
             </div>
         </div>
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
