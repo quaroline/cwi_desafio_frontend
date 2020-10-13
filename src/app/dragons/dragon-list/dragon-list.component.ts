@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Dragon } from 'src/app/models/dragon';
 import { DragonService } from 'src/app/services/dragon.service';
 
@@ -12,6 +13,7 @@ export class DragonListComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private toastr: ToastrService,
     private dragonService: DragonService) {
     }
 
@@ -28,7 +30,7 @@ export class DragonListComponent implements OnInit {
           }
         });
       },
-      fail => { alert("erro"); },
+      fail => { this.toastr.error(fail); },
       () => { });
   }
 
@@ -39,7 +41,7 @@ export class DragonListComponent implements OnInit {
 
         this.dragons.splice(originalDragonIndex, 1);
       },
-      fail => { alert("erro"); },
+      fail => { this.toastr.error(fail); },
       () => { });
   }
 }

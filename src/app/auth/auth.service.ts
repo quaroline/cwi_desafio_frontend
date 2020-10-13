@@ -11,13 +11,13 @@ export class AuthService {
     public currentUser: Observable<User>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('dragondex.user')));
 
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
     public get currentUserValue(): User {
-        let currentUser = this.currentUserSubject.value;
+        let currentUser: User = JSON.parse(localStorage.getItem('dragondex.user'));
         let today = StringUtils.GetFormattedDate(new Date());
 
         return (currentUser && currentUser.token == StringUtils.CryptoText(today)) ? currentUser : null;
@@ -33,7 +33,7 @@ export class AuthService {
             user.password = password;
             user.token = StringUtils.CryptoText(today);
 
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('dragondex.user', JSON.stringify(user));
             return of(user);
         }
         
@@ -41,7 +41,7 @@ export class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('dragondex.user');
         this.currentUserSubject.next(null);
     }
 }

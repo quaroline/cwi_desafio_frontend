@@ -10,8 +10,9 @@ import { DragonResolve } from './services/dragon.resolver';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: DragonListComponent, canActivate: [AccessGuard] },
   { path: 'login', component: LoginComponent },
-  { path: '', component: DragonListComponent, canActivate: [AccessGuard] },
   { path: 'create', component: DragonCreateComponent, canActivate: [AccessGuard] },
   { path: 'details/:id', component: DragonDetailsComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },
   { path: 'edit/:id', component: DragonEditComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },

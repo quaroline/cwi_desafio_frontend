@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Dragon } from 'src/app/models/dragon';
 import { DragonService } from 'src/app/services/dragon.service';
 
@@ -18,6 +19,7 @@ export class DragonEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private toastr: ToastrService,
     private route: ActivatedRoute,
     private dragonService: DragonService) {
     this.originalDragon = this.route.snapshot.data['dragon'];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Dragon } from 'src/app/models/dragon';
 import { DragonService } from 'src/app/services/dragon.service';
 
@@ -17,6 +18,7 @@ export class DragonCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private toastr: ToastrService,
     private router: Router,
     private dragonService: DragonService) {
   }
@@ -34,12 +36,12 @@ export class DragonCreateComponent implements OnInit {
 
   createDragon() {
     if (!this.dragonForm.dirty || !this.dragonForm.valid) {
-      alert("Something's wrong! Try again later.");
+      this.toastr.error("Something's wrong! Try again later.");
     }
 
     this.dragonService.addDragon(this.dragon).subscribe(
-      data => { alert(`${this.dragon.name} added successfully.`); },
-      fail => { alert(`Error: ${fail}`); },
+      data => { this.toastr.success(`${this.dragon.name} added successfully.`); },
+      fail => { this.toastr.error(`Error: ${fail}`); },
       () => { this.router.navigate(['/']); });
   }
 }

@@ -16,8 +16,12 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService) {
+
+      if (this.authService.currentUserValue) {
+        this.router.navigate(['/']);
+      }
+  }
 
   userForm: FormGroup;
   user: User = new User();
@@ -38,7 +42,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user.username, this.user.password).subscribe(
       data => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       fail => {
         this.toastr.error(fail);
