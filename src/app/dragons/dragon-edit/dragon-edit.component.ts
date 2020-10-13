@@ -42,15 +42,15 @@ export class DragonEditComponent implements OnInit {
 
   editDragon() {
     if (!this.dragonForm.dirty || !this.dragonForm.valid) {
-      alert("Something's wrong! Try again later.");
+      this.toastr.error("Something's wrong! Try again later.");
     }
 
     this.dragon.histories = this.originalDragon.name;
 
     //this.dragon.histories.push(this.originalDragon);
     this.dragonService.editDragon(this.originalDragon.id, this.dragon).subscribe(
-      data => { alert(`${this.dragon.name} edited successfully.`); },
-      fail => { alert(`Error: ${fail}`); },
+      data => { this.toastr.success(`${this.dragon.name} edited successfully.`); },
+      fail => { this.toastr.error(`Error: ${fail}`); },
       () => { this.router.navigate(['/']); });
   }
 }
