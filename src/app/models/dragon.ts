@@ -3,10 +3,9 @@ export class Dragon {
     createdAt: Date;
     name: string;
     type: string;
-    histories: any[];
+    histories: string;
 
     constructor() {
         this.createdAt = new Date();
-        this.histories = [];
     }
 }

@@ -5,5 +5,13 @@
         <label for="name"><b>Name</b></label>: {{ dragon.name }}<br>
         <label for="type"><b>Type</b></label>: {{ dragon.type }}<br>
         <label for="createdAt"><b>Created at</b></label>: {{ createdDate }}
+        <div>
+            <h4 class="mt-3">History</h4>
+            <hr>
+            <label for="histories">
+                <span>{{ dragon.histories }}</span>
+            </label>
+            <label *ngIf="dragon.histories == null || dragon.histories == ''"><i>Everyone in the village knows this dragon only by its unique name.</i></label>
+        </div>
     </div>
 </div>

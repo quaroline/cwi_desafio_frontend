@@ -45,6 +45,8 @@ export class DragonEditComponent implements OnInit {
       alert("Something's wrong! Try again later.");
     }
 
+    this.dragon.histories = this.originalDragon.name;
+
     //this.dragon.histories.push(this.originalDragon);
     this.dragonService.editDragon(this.originalDragon.id, this.dragon).subscribe(
       data => { alert(`${this.dragon.name} edited successfully.`); },
