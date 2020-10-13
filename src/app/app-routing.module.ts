@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'create', component: DragonCreateComponent, canActivate: [AccessGuard] },
   { path: 'details/:id', component: DragonDetailsComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },
   { path: 'edit/:id', component: DragonEditComponent, resolve: { dragon: DragonResolve }, canActivate: [AccessGuard] },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent, canActivate: [AccessGuard] }
 ];
 
 @NgModule({
